@@ -16,18 +16,21 @@ public class Main {
 		while (running) {
 			printMenu();
 			int option = readInt("Choose an option: ");
-
-			switch (option) {
-			case 1 -> createAccount();
-			case 2 -> deposit();
-			case 3 -> withdraw();
-			case 4 -> transfer();
-			case 5 -> viewStatement();
-			case 6 -> {
-				System.out.println("Exiting system. Goodbye!");
-				running = false;
-			}
-			default -> System.out.println("Invalid option.");
+			try {
+				switch (option) {
+				case 1 -> createAccount();
+				case 2 -> deposit();
+				case 3 -> withdraw();
+				case 4 -> transfer();
+				case 5 -> viewStatement();
+				case 6 -> {
+					System.out.println("Exiting system. Goodbye!");
+					running = false;
+				}
+				default -> System.out.println("Invalid option.");
+				}
+			} catch (RuntimeException e) {
+				System.out.println("Error: " + e.getMessage());
 			}
 		}
 		scanner.close();
